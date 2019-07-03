@@ -1,0 +1,126 @@
+﻿@model List<Route>
+@{
+    var routes = ViewData["Routes"] as List<SelectListItem>;
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <a asp-controller="Home" asp-action="Index"><img src="~/images/1920x498-slide-1.d3b.jpg" alt="Slide1"></a>
+        </div>
+
+        <div class="item">
+            <a asp-controller="Home" asp-action="Index"><img src="~/images/1920x498-0000_03.d3b.jpg" alt="Slide2"></a>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div class="container">
+    <div class="main-top-turs">
+        <!--div class="title"><span>Наши лучшие туры</span></div-->
+        <div style="display: none;">
+            <div id="ocWind" class="pop-oc">
+                <div class="pop-oc_t page-head">Заказать поездку</div>
+                <div class="pop-oc_prod hide" id="ocWind_name_product"></div>
+                <div class="row">
+                    <div class="hide">
+                        <div class="pop-oc_img"><img id="ocWind_img_product" src="~/images/logo.png" alt=""></div>
+                    </div>
+                    <div class="hide">
+                        <div class="pop-oc-count">
+                            <div class="pop-oc-cnt_t">Количество:</div>
+                            <div class="pop-oc-cnt_btn"><span class="ocWind_minus">-</span><input type="text" maxlength="4" value="1" id="ocWind_count"><span class="ocWind_plus">+</span></div>
+                        </div>
+                        <div class="pop-oc_price">Цена: <span id="ocWind_price"></span>UAH</div>
+                        <div class="pop-oc_sum">Сумма: <span id="ocWind_sum"></span>UAH</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="">
+                    <p id="ocWind_msg"></p>
+                    <form id="ocWind_form" method="POST">
+                        <input name="lang" type="hidden" value="ru">
+                        <input name="mail_subject" type="hidden" value="">
+                        <div>
+                            <label class="control-label">Контактное лицо<span class="red">*</span></label>
+                            <input class="form-control" name="Name" type="text" maxlength="40" data-fl-check="1">
+                        </div>
+                        <div>
+                            <label class="control-label">Телефон<span class="red">*</span></label>
+                            <input class="form-control" name="Phone" id="oc_phone" maxlength="20" type="text" data-fl-check="1">
+                        </div>
+                        <div>
+                            <label class="control-label">Примечание</label>
+                            <input class="form-control" name="Comment" type="text" placeholder="" data-fl-check="0">
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                    <button class="pop-oc_btn send" id="ocWind_send_order">Отправить</button>
+                </div>
+            </div>
+            <div id="ocWind_success">
+                <div class="thanks">
+                    <p>Спасибо, Ваш заказ принят.</p><p>В ближайшее время менеджер свяжется с Вами.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="white-fon">
+    <div class="container">
+        <div class="main-turs">
+            <!--div class="title"><span>Мы предлагаем!</span><a href="http://blic-tur.ua/rejsy.html" class="title_see">Смотреть все</a></div-->
+            <div class="tur-lists">
+                <div class="row">
+                    @foreach (var route in Model)
+                    {
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="tur-list">
+                                <a asp-action="Info" asp-route-id="@route.Id" title="@route.CityFrom.Title - @route.CityTo.Title">
+                                    <img src="/uploads/@route.Img" width="300" height="200" alt="@route.CityFrom.Title - @route.CityTo.Title" class="tur-list_img">
+                                </a>
+                                <div class="tur-list-info">
+                                    <a asp-action="Info" asp-route-id="@route.Id" class="tur-list_t" title="@route.CityFrom.Title - @route.CityTo.Title">@route.CityFrom.Title - @route.CityTo.Title</a>
+                                    <a asp-action="Info" asp-route-id="@route.Id" class="tur-list_more" title="Подробнее">Подробнее</a>
+                                </div>
+                                <div class="tur-list-buy">
+                                    <div class="tur-list_price">@route.Price <span>грн</span></div>
+                                    <form method="post">
+                                        <input type="hidden" name="oc_id_product" value="@route.Id">
+                                        <input type="hidden" name="oc_name_product" value="@route.CityFrom.Title - @route.CityTo.Title">
+                                        <input type="hidden" name="oc_price" value="@route.Price">
+                                        <button class="zakaz-btn tur-list_btn" onclick="FBmodule.sendForm_oc(this.form)">Заказать</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var storage = localStorage.getItem('item');
+    if (storage && storage !== "#") {
+        $('.nav-tabs a[href="' + storage + '"]').tab('show');
+    }
+    $('ul.nav').on('click', 'li:not(.active)', function () {
+        var itemId = $(this).find('a').attr('href');
+        localStorage.setItem('item', itemId);
+    });</script>

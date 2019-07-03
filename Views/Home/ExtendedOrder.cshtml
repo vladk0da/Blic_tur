@@ -1,0 +1,149 @@
+﻿@model Blic_tur.Areas.Admin.ViewModels.ExtendedOrdersViewModels
+
+@{
+    var Cities = ViewData["Cities"] as List<SelectListItem>;
+    var Routes = ViewData["Routes"] as List<SelectListItem>;
+}
+
+<style>
+    .styleforshow {
+        font-size: 20px;
+    }
+</style>
+
+<h2>Расширенный заказ</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4 col-md-offset-2">
+        <form asp-action="ExtendedOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DepartureDate" class="control-label"></label>
+                <input asp-for="DepartureDate" class="form-control" />
+                <span asp-validation-for="DepartureDate" class="text-danger"></span>
+                <label>Введите дату позже текущей</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" value="0991112233" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+                <label>Пример: 0991112233</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <label>Пример: Николай</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" min="0" max="100" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="FromCity" class="control-label"></label>
+                <select asp-items="@Cities" name="FromCity" asp-for="FromCity" class="form-control">
+                    <option>--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromPlaceInCity" class="control-label"></label>
+                <input asp-for="FromPlaceInCity" class="form-control" />
+                <span asp-validation-for="FromPlaceInCity" class="text-danger"></span>
+                <label>Пример: пл.Освободения 18</label>
+            </div>
+            <div>
+                <label asp-for="ToCity" class="control-label"></label>
+                <select disabled asp-items="@Cities" name="ToCity" asp-for="ToCity" class="form-control">
+                    <option>--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToPlaceInCity" class="control-label"></label>
+                <input asp-for="ToPlaceInCity" class="form-control" />
+                <span asp-validation-for="ToPlaceInCity" class="text-danger"></span>
+                <label>Пример: ул.Цветочная 5</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment" class="control-label"></label>
+                <input asp-for="Comment" class="form-control" />
+                <span asp-validation-for="Comment" class="text-danger"></span>
+                <label>Пример: большая собака</label>
+            </div>
+
+            <div>
+                <input type="submit" value="Заказать" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <div id="Price" class="styleforshow">
+            Введите "Из какого города", "В какой город" и "Количество", чтобы увидеть конечную стоимость.
+        </div>
+    </div>
+</div>
+
+@section Script
+{
+    <script>
+        $(() => {
+            function requestPrice(fromCityId, toCityId, amount) {
+                console.log("AJAX request");
+                if (fromCityId && fromCityId != "--" && toCityId && toCityId != "--" && amount && amount > 0) {
+                    fetch(`@Url.Action("GetPrice")?fromCityId=${fromCityId}&toCityId=${toCityId}&amount=${amount}`)
+                        .then((price) => {
+                            console.dir(price);
+                            price.text().then(text => $("#Price").text(text));
+                        })
+                        .catch((err) => conosle.error(err));
+                    return true;
+                }
+                return false;
+            }
+
+            // При заполнении количества
+            $("#Amount").change(function (event) {
+                console.log("кол-во");
+                if (requestPrice($("#FromCity").val(), $("#ToCity").val(), $("#Amount").val())) {
+                } else {
+                    $("#Price").text("Введите \"Из какого города\", \"В какой город\" и \"Количество\", чтобы увидеть конечную стоимость.");
+                }
+            });
+
+            // При заполнении откуда
+            $("#FromCity").change(function (event) {
+                console.log("Откуда");
+                $("#ToCity").attr("disabled", "disabled");
+                   $("#ToCity").empty().append("<option>--</option>");
+                     fetch(`@Url.Action("GetCitiesTo")?fromCityId=${$(this).val()}`)
+                         .then(data => {
+                             console.dir(data);
+                             data.json()
+                                 .then(cities => {
+                                     if (cities && cities.length > 0) {                                      
+                                         cities.forEach(city => {
+                                             console.dir(city);
+                                             $("#ToCity").append(`<option value='${city.cityToId}'>${city.title}</option>`);
+                                         });
+                                         $("#ToCity").removeAttr("disabled");
+                                     }
+                            });
+                    })
+                    .catch((err) => console.error(err));
+                    requestPrice($("#FromCity").val(), $("#ToCity").val(), $("#Amount").val());
+
+
+            });
+
+            // При заполнении куда
+            $("#ToCity").change(function (event) {
+                console.log("Куда");
+                if (requestPrice($("#FromCity").val(), $("#ToCity").val(), $("#Amount").val())) {
+                } else {
+                    $("#Price").text("Введите \"Из какого города\", \"В какой город\" и \"Количество\", чтобы увидеть конечную стоимость.");
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="ru" class="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="keywords" content=". Блиц Тур - Кривой Рог">
+    <meta name="description" content="Блиц Тур - Кривой Рог - Blic-tur">
+    <link rel="canonical" href="http://blic-tur.ua/">
+    <title>Блиц Тур - Кривой Рог</title>
+    <base href=".">
+    <link rel="icon" href="http://blic-tur.ua/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="http://blic-tur.ua/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="http://blic-tur.ua/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://blic-tur.ua/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://blic-tur.ua/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://blic-tur.ua/apple-touch-icon-152x152.png">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/lightslider.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/style_blic.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/jquery.fancybox.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/jquery.fancybox-buttons.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/jquery.fancybox-thumbs.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+    <script src="~/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="~/js/jquery.fancybox-buttons.js"></script>
+    <script type="text/javascript" src="~/js/jquery.fancybox-media.js"></script>
+    <script type="text/javascript" src="~/js/jquery.fancybox-thumbs.js"></script>
+    <script type="text/javascript" src="~/js/lightslider.min.js"></script>
+    <script type="text/javascript" src="~/js/custom.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.symb,#cb_name,#f_name').keypress(function (key) {
+                if ((key.charCode < 48 || key.charCode > 57)) return true;
+                else return false;
+            });
+        });</script>
+    <script type="text/javascript" src="~/js/jquery.maskedinput.js"></script>
+    <script type="text/javascript" src="~/js/feedback_scr1.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $("#cb_phone,#fb_phone,#phone_contact,.form_phone").mask('+38(999)-99-99-999');
+            $("#open_hide_form_oc").fancybox({ href: '#form_oc' });
+            $("#open_hide_succ").fancybox({ href: '#suc_send_oc' });
+            $("#open_hide_succ_sh").fancybox({ href: '#sucsh_send_oc' });
+            $("#open_hide_succ_bc").fancybox({ href: '#cb_success' });
+
+            $('.zakaz-btn').fancybox({ href: '#ocWind', wrapCSS: 'zakaz_bl', maxWidth: 700 });
+            if ($(window).width() <= 767) {
+                $('.fix-btn').each(function () {
+                    $(this).replaceWith(
+                        $('<a href="tel:' + $(this).attr('data-phone') + '" class="oz fix-btn a_center phone-number"><img class="bottom" src="img/bc-btn2.png"><img class="top" src="img/bc-btn21.png"></a>')
+                    );
+                });
+            }
+            else {
+                $('.a_center').fancybox({ wrapCSS: 'zayvka_bl', maxWidth: 600 });
+            }
+
+        });</script>
+
+    <style type="text/css">
+        .fancybox-margin {
+            margin-right: 17px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/style_blic.css?v=1.1" type="text/css" media="screen">
+</head>
+<body class="cbp-spmenu-push">
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+        <div class="cbp-spmenu-close"></div>
+        <div class="sp-wp">
+            <div id="sp-phone"></div>
+            <div id="sp-menu"></div>
+            <div id="sp-soc"></div>
+        </div>
+    </nav>
+    <div id="h-fixed">
+        <div class="container">
+            <div id="fixed-menu"><span></span></div>
+            <div id="fixed-logo"></div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header>
+            <div class="h-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-sm-10">
+                            <div id="h-phone">
+                                <div class="h-phone">
+                                    <span class="phone-number"><span class="viber">(067) 539-38-56</span></span>
+                                    <span class="phone-number"><span class="ks">(068) 409-40-40</span></span>
+                                    <span class="phone-number"><span class="mts">(097) 133-44-33</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <div id="h-logo"><div class="logo"><a asp-area="Home" asp-controller="Home" asp-action="Index" title="Blic-tur"><img src="~/images/logo.png" alt="Blic-tur"></a></div></div>
+                        </div>
+                        <div class="col-md-9  col-sm-12">
+                            <div id="h-menu">
+                                <div class="h-menu">
+                                    <ul>
+                                        <li class="active"><a asp-area="Home" asp-controller="Home" asp-action="Index"><span>Главная этого сайта</span></a></li>
+                                        <li><a asp-controller="Cities"><span>Города</span></a></li>
+                                        <li><a asp-controller="Routes"><span>Рейсы</span></a></li>
+                                        <li><a asp-controller="Drivers"><span>Водители</span></a></li>
+                                        <li><a asp-controller="Managers"><span>Менеджеры</span></a></li>
+                                        <li><a asp-controller="Cars"><span>Транспорт</span></a></li>
+                                        <li><a asp-controller="Orders"><span>Заказы</span></a></li>
+                                        <partial name="_LoginPartial" />
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+
+        
+
+        @RenderBody()
+
+
+        
+        
+       
+
+        
+        <footer>
+            <div class="container">
+                <div class="f-1">
+                    <div class="row">
+                        
+                        <div class="clear-sm"></div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="podpis">
+                                <div class="infos_subscr">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-1 col-md-3 col-sm-6 col-xs-12">
+                            <div class="f-logo"><a href="http://blic-tur.ua/" title="Blic-tur"><img src="~/images/logo_bot.png" alt="Blic-tur"></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-6 col-xs-12 copy_blic">Все права защищены. Использование материалов <br>сайта только с разрешения студента ШАГа. © 2019</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div id="backtop" style="display: none;"></div>
+        <script>
+            $(document).ready(function () {
+                $('#backtop').hide();
+                var top_show = 350; // В каком положении полосы прокрутки начинать показ кнопки "Наверх"
+                var delay = 1000; // Задержка прокрутки
+                $(window).scroll(function () { // При прокрутке попадаем в эту функцию
+                    /* В зависимости от положения полосы прокрукти и значения top_show, скрываем или открываем кнопку "Наверх" */
+                    if ($(this).scrollTop() > top_show) $('#backtop').fadeIn();
+                    else $('#backtop').fadeOut();
+                });
+                $('#backtop').click(function () { // При клике по кнопке "Наверх" попадаем в эту функцию
+                    /* Плавная прокрутка наверх */
+                    $('body, html').animate({
+                        scrollTop: 0
+                    }, delay);
+                });
+            });
+
+            $(document).ready(function () {
+                function toSp() {
+                    logo = $("#h-logo").html();
+                    $(logo).appendTo($("#fixed-logo"));
+                    $("#h-logo").empty();
+                    menu = $("#h-menu").html();
+                    $(menu).appendTo($("#sp-menu"));
+                    $("#h-menu").empty();
+                    soc = $("#h-soc").html();
+                    $(soc).appendTo($("#sp-soc"));
+                    $("#h-soc").empty();
+                    phone = $("#h-phone").html();
+                    $(phone).appendTo($("#sp-phone"));
+                    $("#h-phone").empty();
+                }
+                if ($(window).width() < 768) {
+                    toSp();
+                }
+                $(window).resize(function () {
+                    if ($(window).width() < 768) {
+                        toSp();
+                    } else {
+                        logo = $("#fixed-logo").html();
+                        $(logo).appendTo($("#h-logo"));
+                        $("#fixed-logo").empty();
+                        menu = $("#sp-menu").html();
+                        $(menu).appendTo($("#h-menu"));
+                        $("#sp-menu").empty();
+                        soc = $("#sp-soc").html();
+                        $(soc).appendTo($("#h-soc"));
+                        $("#sp-soc").empty();
+                        phone = $("#sp-phone").html();
+                        $(phone).appendTo($("#h-phone"));
+                        $("#sp-phone").empty();
+                    }
+                });
+            });
+            $(document).ready(function () {
+                $(document).on("click", "#fixed-menu", function () {
+                    $('.wrapper').addClass('cbp-spmenu-wp');
+                    $('#cbp-spmenu-s1').addClass('cbp-spmenu-open');
+                });
+                $(document).on("click", ".cbp-spmenu-close,.cbp-spmenu-wp", function () {
+                    $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open');
+                    $('.wrapper').removeClass('cbp-spmenu-wp');
+                });
+            });</script>
+
+
+    </div>
+
+    <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+    @RenderSection("Scripts", false)
+</body>
+</html>

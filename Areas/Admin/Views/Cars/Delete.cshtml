@@ -1,0 +1,51 @@
+﻿@model Blic_tur.Models.Car
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы уверены, что хотите удалить этот элемент?</h3>
+<div>
+    <h4>Car</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeCar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeCar)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Number_of_the_car)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Number_of_the_car)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

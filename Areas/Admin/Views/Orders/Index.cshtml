@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Blic_tur.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Заказы</h2>
+
+<p>
+    <a asp-action="Create">Добавить новый заказ</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>*@
+            <th hidden="hidden">
+                @Html.DisplayNameFor(model => model.RouteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <td style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.Route.CityFrom)
+            </td>
+            <td style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.Route.CityTo)
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.FromPlaceInCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToPlaceInCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td hidden="hidden">
+                @Html.DisplayFor(modelItem => item.RouteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Route.CityFrom.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Route.CityTo.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromPlaceInCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToPlaceInCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Blic_tur.Areas.Identity.Data
+@inject SignInManager<BlicTurUser> SignInManager
+@inject UserManager<BlicTurUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li><a asp-area="Admin" asp-controller="Home" asp-action="Index" title="Админка"><span>Админка</span></a></li>
+    <li>
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+            <button type="submit" class="btn btn-danger">Выход</button>
+        </form>
+    </li>
+}
+else
+{
+    //<ul class="nav navbar-nav navbar-right">
+    //<li><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a></li>
+    <li><a asp-area="Identity" asp-page="/Account/Login">Вход</a></li>
+    //</ul>
+}

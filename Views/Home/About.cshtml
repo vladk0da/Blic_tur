@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Главная страница";
+}
+    <div class="col-xs-12">
+        <div class="col-md-9 col-sm-12 col-xs-12 nopad pull-right">
+            <div id="news-inside">
+                <h1 class="page-head">О компании</h1>
+                <main class="content">
+                    <div class="img-inside"><img src="~/images/sea1.jpg" alt="О компании"></div>
+                    <p><span><strong>Туристическое агентство «Блиц-тур» с 2004 года</strong>&nbsp;занимается организацией поездок к морю, а также предоставляет экскурсионные туры по Украине.</span><br><span>&nbsp;&nbsp; &nbsp;Мы пропагандируем стиль профессионального подхода к клиентам и гарантируем качественное обслуживание на всех этапах поездки.&nbsp;</span><br><span>&nbsp;&nbsp; &nbsp;За 12 лет стабильной и безупречной работы нам доверили свой отдых более 130 000 жителей Кривого Рога!</span></p>
+                </main>
+            </div>
+        </div>
+        @*<div style="display: none;">
+            <div id="ocWind" class="pop-oc">
+                <div class="pop-oc_t page-head">Заказать поездку</div>
+                <div class="pop-oc_prod hide" id="ocWind_name_product"></div>
+                <div class="row">
+                    <div class="hide">
+                        <div class="pop-oc_img"><img id="ocWind_img_product" src="img/logo.png" alt=""></div>
+                    </div>
+                    <div class="hide">
+                        <div class="pop-oc-count">
+                            <div class="pop-oc-cnt_t">Количество:</div>
+                            <div class="pop-oc-cnt_btn"><span class="ocWind_minus">-</span><input type="text" maxlength="4" value="1" id="ocWind_count"><span class="ocWind_plus">+</span></div>
+                        </div>
+                        <div class="pop-oc_price">Цена: <span id="ocWind_price"></span>UAH</div>
+                        <div class="pop-oc_sum">Сумма: <span id="ocWind_sum"></span>UAH</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="">
+                    <p id="ocWind_msg"></p>
+                    <form id="ocWind_form" method="POST">
+                        <input name="lang" type="hidden" value="ru">
+                        <input name="mail_subject" type="hidden" value="">
+                        <div><label class="control-label">Контактное лицо<span class="red">*</span></label><input class="form-control" name="name" type="text" maxlength="40" data-fl-check="1"></div>		<div><label class="control-label">Телефон<span class="red">*</span></label><input class="form-control" name="phone" id="oc_phone" maxlength="20" type="text" data-fl-check="1"></div>		<div><label class="control-label">E-mail</label><input class="form-control" name="email" type="text" maxlength="40" data-fl-check="0"></div>
+                        <div><label class="control-label">Примечание</label><input class="form-control" name="comment" type="text" placeholder="" data-fl-check="0"></div>		<div class="clearfix"></div>
+                    </form>
+                    <button class="pop-oc_btn send" id="ocWind_send_order">Отправить</button>
+                </div>
+            </div>
+            <div id="ocWind_success">
+                <div class="thanks">
+                    <p>Спасибо, Ваш заказ принят.</p><p>В ближайшее время менеджер свяжется с Вами.</p>
+                </div>
+            </div>
+        </div>*@
+        @*<aside class="col-md-3 col-xs-12">
+            <h2 class="razdel-head news-side other1">Наши лучшие туры</h2>
+            <div class="col-md-12 col-sm-4 col-xs-12">
+                <div class="tur-list">
+                    <a href="krivoj_rog_-_yalta.html" title="Кривой Рог - Ялта"><img src="assets/cache/images/reysi/360x280-yalta.4cb.jpg" alt="Кривой Рог - Ялта" class="tur-list_img"></a>
+                    <div class="tur-list-info">
+                        <a href="krivoj_rog_-_yalta.html" class="tur-list_t" title="Кривой Рог - Ялта">Кривой Рог - Ялта</a>
+                        <a href="krivoj_rog_-_yalta.html" class="tur-list_more" title="Подробнее">Подробнее</a>
+                    </div>
+                    <div class="tur-list-buy">
+                        <div class="tur-list_price">600 <span>грн</span></div>
+                        <form method="post">
+                            <input type="hidden" name="oc_img_product" value="assets/images/reysi/yalta.jpg">
+                            <input type="hidden" name="oc_id_product" value="37">
+                            <input type="hidden" name="oc_name_product" value="Кривой Рог - Ялта">
+                            <input type="hidden" name="oc_price" value="600">
+                            <button class="zakaz-btn tur-list_btn" onclick="FBmodule.sendForm_oc(this.form, '{$lang}','{$mail_subject}')">Заказать</button>
+                        </form>
+                    </div>
+                </div>
+            </div><div class="col-md-12 col-sm-4 col-xs-12">
+                <div class="tur-list">
+                    <a href="krivoj_rog_-_kirillovka.html" title="Кривой Рог - Кирилловка"><img src="assets/cache/images/reysi/360x280-kirillovka.4cb.jpg" alt="Кривой Рог - Кирилловка" class="tur-list_img"></a>
+                    <div class="tur-list-info">
+                        <a href="krivoj_rog_-_kirillovka.html" class="tur-list_t" title="Кривой Рог - Кирилловка">Кривой Рог - Кирилловка</a>
+                        <a href="krivoj_rog_-_kirillovka.html" class="tur-list_more" title="Подробнее">Подробнее</a>
+                    </div>
+                    <div class="tur-list-buy">
+                        <div class="tur-list_price">430 <span>грн</span></div>
+                        <form method="post">
+                            <input type="hidden" name="oc_img_product" value="assets/images/reysi/kirillovka.jpg">
+                            <input type="hidden" name="oc_id_product" value="31">
+                            <input type="hidden" name="oc_name_product" value="Кривой Рог - Кирилловка">
+                            <input type="hidden" name="oc_price" value="430">
+                            <button class="zakaz-btn tur-list_btn" onclick="FBmodule.sendForm_oc(this.form, '{$lang}','{$mail_subject}')">Заказать</button>
+                        </form>
+                    </div>
+                </div>
+            </div><div class="col-md-12 col-sm-4 col-xs-12">
+                <div class="tur-list">
+                    <a href="krivoj_rog_-_olenyovka.html" title="Кривой Рог - Оленёвка"><img src="assets/cache/images/360x280-olen.4cb.jpg" alt="Кривой Рог - Оленёвка" class="tur-list_img"></a>
+                    <div class="tur-list-info">
+                        <a href="krivoj_rog_-_olenyovka.html" class="tur-list_t" title="Кривой Рог - Оленёвка">Кривой Рог - Оленёвка</a>
+                        <a href="krivoj_rog_-_olenyovka.html" class="tur-list_more" title="Подробнее">Подробнее</a>
+                    </div>
+                    <div class="tur-list-buy">
+                        <div class="tur-list_price">700 <span>грн</span></div>
+                        <form method="post">
+                            <input type="hidden" name="oc_img_product" value="assets/images/olen.jpg">
+                            <input type="hidden" name="oc_id_product" value="48">
+                            <input type="hidden" name="oc_name_product" value="Кривой Рог - Оленёвка">
+                            <input type="hidden" name="oc_price" value="700">
+                            <button class="zakaz-btn tur-list_btn" onclick="FBmodule.sendForm_oc(this.form, '{$lang}','{$mail_subject}')">Заказать</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </aside>*@
+    </div>

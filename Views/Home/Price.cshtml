@@ -1,0 +1,29 @@
+﻿@model List<Route>
+@{
+    ViewData["Title"] = "Цены";
+    var routes = ViewData["Routes"] as List<SelectListItem>;
+}
+    <div class="col-xs-12">
+        <div id="news-inside">
+            <h1 class="page-head">Расписание, цены</h1>
+        </div>
+        <div class="content">
+            <div class="table-responsive">
+                <table style="margin-left: auto; margin-right: auto; font-size: 18px; width: 100%;" summary="border:3px solid #606060;">
+                    <tbody>
+                        <tr>
+                            <td class="justifyleft" style="background-color: #c7234d; color: #ffffff;"><strong>Маршрут</strong></td>
+                            <td style="background-color: #c7234d; color: #ffffff;"><strong>Стоимость</strong></td>
+                        </tr>
+                        @foreach (var route in Model)
+                        {
+                            <tr>
+                                <td><a asp-action="Info" asp-route-id="@route.Id">@route.CityFrom.Title - @route.CityTo.Title</a></td>
+                                <td>@route.Price</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

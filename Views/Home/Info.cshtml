@@ -1,0 +1,148 @@
+﻿@model Route
+@{
+    ViewData["Title"] = "Info";
+    var route = Model;
+}
+
+@*<a class="oz fix-btn a_center phone-number" href="#call_back_form" data-phone="+380684094040" data-title="Заказать обратный звонок"><img class="bottom" src="~/images/bc-btn2.png"><img class="top" src="~/images/bc-btn21.png"></a>various  
+
+<div style="display: none;">
+    <div class="back-call" id="call_back_form">
+        <div class="back-call_ic"></div>
+        <div class="back-call_t page-head">Оставить заявку</div>
+        <p id="msg_bc" class=""></p>
+        <form id="bcform" method="POST" class="back-call_form">
+            <div>
+                <label class="back-call_lbl control-label">Имя<span class="req">*</span></label>
+                <div><input class="back-call_it form-control" name="name" type="text" maxlength="40" data-fl-check="1" /></div>
+            </div>
+            <div>
+                <label class="back-call_lbl control-label">Телефон<span class="req">*</span></label>
+                <div><input class="back-call_it form-control" id="bc_phone" name="phone" type="text" maxlength="20" data-fl-check="1" /></div>
+            </div>
+
+            <button class="back-call_btn-send send" onclick="FBmodule.sendForm_bc('ru','','')">Отправить</button>
+        </form>
+    </div>
+    <div id="bc_success">
+        <div><p>Спасибо, Ваша заявка принята.</p><p>В ближайшее время менеджер свяжется с Вами.</p></div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="open_hide_form_oc"></div>
+    <div id="open_hide_succ"></div>
+    <div id="open_hide_succ_sh"></div>
+    <div id="open_hide_succ_bc"></div>
+</div>*@
+
+<!--div class="container">
+    <div class="row">
+        <div class="breadcr"><span class="B_crumbBox" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope><span class="B_firstCrumb"><a class="B_homeCrumb" href="/" title="Блиц Тур - Кривой Рог" itemprop="url">Главная</a></span> <img src="img/breadcr_img.png" alt=""> <a class="B_crumb" href="/rejsy.html" title="Рейсы" itemprop="url">Рейсы</a> <img src="img/breadcr_img.png" alt=""> <span class="B_lastCrumb"><a class="B_currentCrumb" href="/krivoj_rog_-_lazurnoe.html" title="Кривой Рог - Лазурное" itemprop="url">Кривой Рог - Лазурное</a></span></span></div>
+    </div>
+</div-->
+
+<div class="container">
+    <div class="main-top-turs">
+        <div style="display: none;">
+            <div id="ocWind" class="pop-oc">
+                <div class="pop-oc_t page-head">Заказать поездку</div>
+                <div class="pop-oc_prod hide" id="ocWind_name_product"></div>
+                <div class="row">
+                    <div class="hide">
+                        <div class="pop-oc_img"><img id="ocWind_img_product" src="~/images/logo.png" alt=""></div>
+                    </div>
+                    <div class="hide">
+                        <div class="pop-oc-count">
+                            <div class="pop-oc-cnt_t">Количество:</div>
+                            <div class="pop-oc-cnt_btn"><span class="ocWind_minus">-</span><input type="text" maxlength="4" value="1" id="ocWind_count"><span class="ocWind_plus">+</span></div>
+                        </div>
+                        <div class="pop-oc_price">Цена: <span id="ocWind_price"></span>UAH</div>
+                        <div class="pop-oc_sum">Сумма: <span id="ocWind_sum"></span>UAH</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="">
+                    <p id="ocWind_msg"></p>
+                    <form id="ocWind_form" method="POST">
+                        <input name="lang" type="hidden" value="ru">
+                        <input name="mail_subject" type="hidden" value="">
+                        <div>
+                            <label class="control-label">Контактное лицо<span class="red">*</span></label>
+                            <input class="form-control" name="Name" type="text" maxlength="40" data-fl-check="1">
+                        </div>
+                        <div>
+                            <label class="control-label">Телефон<span class="red">*</span></label>
+                            <input class="form-control" name="Phone" id="oc_phone" maxlength="20" type="text" data-fl-check="1">
+                        </div>
+                        <div>
+                            <label class="control-label">Примечание</label>
+                            <input class="form-control" name="Comment" type="text" placeholder="" data-fl-check="0">
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                    <button class="pop-oc_btn send" id="ocWind_send_order">Отправить</button>
+                </div>
+            </div>
+            <div id="ocWind_success">
+                <div class="thanks">
+                    <p>Спасибо, Ваш заказ принят.</p><p>В ближайшее время менеджер свяжется с Вами.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="white-fon">
+    <div class="container">
+        <h1 class="page-head"></h1>
+        <div class="tour">
+            <div class="row">
+                
+                    <div class="col-xs-12 col-lg-7 pull-right">
+                        <div class="row">
+                            <h1>@route.CityFrom.Title - @route.CityTo.Title</h1>
+                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                                <div class="tour-price">Стоимость:<span class="tour_price">@route.Price<span> грн</span></span></div>
+                                <a href="#buy_ticket" class="various buy_ticket-btn hide">Купить билет</a>
+                                <form method="post">
+                                    <input type="hidden" name="oc_id_product" value="@route.Id" />
+                                    <input type="hidden" name="oc_count" value="1" />
+                                    <input type="hidden" name="oc_name_product" value="@route.CityFrom.Title - @route.CityTo.Title" />
+                                    <input type="hidden" name="oc_price" value="@route.Price" />
+                                    <input type="hidden" name="oc_currency" value="грн" />
+                                    <button class="tour_btn" onclick="FBmodule.sendForm_oc(this.form)">Заказать поездку</button>
+                                </form>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                                <div class="tour-adv">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 half"><div class="tour-adv-list"><div class="tour-adv-list_img"><img src="~/img/tv.png" alt="" /></div><div class="tour-adv-list_tx">Телевизор</div></div></div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 half"><div class="tour-adv-list"><div class="tour-adv-list_img"><img src="~/img/film.png" alt="" /></div><div class="tour-adv-list_tx">Просмотр фильмов</div></div></div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 half"><div class="tour-adv-list"><div class="tour-adv-list_img"><img src="~/img/hot.png" alt="" /></div><div class="tour-adv-list_tx">Обогрев салона</div></div></div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 half"><div class="tour-adv-list"><div class="tour-adv-list_img"><img src="~/img/cond.png" alt="" /></div><div class="tour-adv-list_tx">Кондиционер</div></div></div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 half"><div class="tour-adv-list"><div class="tour-adv-list_img"><img src="~/img/wifi.png" alt="" /></div><div class="tour-adv-list_tx">Бесплатный<br />WI-Fi</div></div></div><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 half"><div class="tour-adv-list"><div class="tour-adv-list_img"><img src="~/img/seat.png" alt="" /></div><div class="tour-adv-list_tx">Удобные сидения</div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tour_tx">
+                            <label>@route.Description</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-5"><div class="tour_img"><img src="~/uploads/@route.Img" width="400" height="300" alt="@route.CityFrom.Title - @route.CityTo.Title" /></div></div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*<script type="text/javascript">
+            var storage = localStorage.getItem('item');
+            if (storage && storage !== "#") {
+                $('.nav-tabs a[href="' + storage + '"]').tab('show');
+            }
+            $('ul.nav').on('click', 'li:not(.active)', function () {
+                var itemId = $(this).find('a').attr('href');
+                localStorage.setItem('item', itemId);
+            });
+</script>*@
+
+
