@@ -26,11 +26,13 @@ namespace Blic_tur.Models
         [Required(ErrorMessage = "Укажите город отправления")]
         [Display(Name ="Отправление")]
         public virtual City CityFrom { get; set; }
+        [Display(Name = "Город отправления")]
         public Guid CityFromId { get; set; }
 
         [Required(ErrorMessage = "Укажите город прибытия")]
         [Display(Name ="Прибытие")]
         public virtual City CityTo { get; set; }
+        [Display(Name = "Город прибытия")]
         public Guid CityToId { get; set; }
 
     }
