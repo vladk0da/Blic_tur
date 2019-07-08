@@ -57,17 +57,19 @@ namespace Blic_tur.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-        public void OnGet(string returnUrl = null)
-        {
-            ReturnUrl = returnUrl;
-        }
 
-        // Для 
-        //public IActionResult OnGet(string returnUrl = null)
+        //Расскоментировать этот код и закомментировать код ниже (OnGet), чтобы добавить возможность регистрации 
+        //public void OnGet(string returnUrl = null)
         //{
         //    ReturnUrl = returnUrl;
-        //    return Redirect("/"); // заглушка
         //}
+
+        // Заглушка 
+        public IActionResult OnGet(string returnUrl = null)
+        {
+            ReturnUrl = returnUrl;
+            return Redirect("/"); // заглушка
+        }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {

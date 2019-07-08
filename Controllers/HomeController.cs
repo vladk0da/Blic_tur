@@ -68,17 +68,6 @@ namespace Blic_tur.Controllers
         {
             ViewData["Cities"] = (await _db.Cities.ToListAsync()).ConvertAll(c => new SelectListItem { Text = c.Title, Value = c.Id.ToString() });
             ViewData["Routes"] = await _db.Routes.Include("CityFrom").Include("CityTo").ToListAsync();
-            //return View(new ExtendedOrdersViewModels {
-            //    DepartureDate = DateTime.Now,
-            //    Phone="0991234567",
-            //    Comment="Comment",
-            //    Amount=1,
-            //    FromCity=(await _db.Cities.FirstOrDefaultAsync(c => c.Title=="Днепр")).Id.ToString(),
-            //    ToCity = (await _db.Cities.FirstOrDefaultAsync(c => c.Title == "Харьков")).Id.ToString(),
-            //    Name ="Коля",
-            //    FromPlaceInCity = "пл.Островского",
-            //    ToPlaceInCity ="пл. Освобождения"
-            //});
             return View();
         }
 
@@ -103,7 +92,6 @@ namespace Blic_tur.Controllers
                     Route = SearchRouteName,
                     RouteId = SearchRouteName.Id
                 };
-                //_db.Add(newExtendedOrder);
                 _db.Add(newOrder);
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Sucsess));
