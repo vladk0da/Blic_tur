@@ -45,8 +45,12 @@ namespace Blic_tur
                 options.Password.RequireLowercase = false;
             });
 
-            services.AddEntityFrameworkInMemoryDatabase();
-            services.AddDbContext<BlicTourContext>(opt => { opt.UseInMemoryDatabase("db"); opt.EnableSensitiveDataLogging(true); } );
+            //services.AddEntityFrameworkInMemoryDatabase();
+            services.AddDbContext<BlicTourContext>(opt => {
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+               // opt.UseInMemoryDatabase("db");
+                //opt.EnableSensitiveDataLogging(true);
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

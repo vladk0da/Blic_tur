@@ -57,11 +57,17 @@ namespace Blic_tur.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-        public IActionResult OnGet(string returnUrl = null)
+        public void OnGet(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
-            return Redirect("/"); // заглушка
         }
+
+        // Для 
+        //public IActionResult OnGet(string returnUrl = null)
+        //{
+        //    ReturnUrl = returnUrl;
+        //    return Redirect("/"); // заглушка
+        //}
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {

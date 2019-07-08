@@ -15,13 +15,16 @@ namespace Blic_tur.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) =>
+            {
                 services.AddDbContext<BlicTurContext>(options =>
-                    options.UseSqlite(
-                        context.Configuration.GetConnectionString("BlicTurContextConnection")));
+            //options.UseSqlite(
+            //    context.Configuration.GetConnectionString("BlicTurContextConnection")));
+            options.UseSqlServer(
+                   context.Configuration.GetConnectionString("DefaultConnection")));
 
                 services.AddDefaultIdentity<BlicTurUser>()
-                    .AddEntityFrameworkStores<BlicTurContext>();
+                        .AddEntityFrameworkStores<BlicTurContext>();
             });
         }
     }
