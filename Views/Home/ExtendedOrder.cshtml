@@ -11,12 +11,13 @@
     }
 </style>
 
-<h2>Расширенный заказ</h2>
-<hr />
 <div class="row">
     <div class="col-md-4 col-md-offset-2">
         <form asp-action="ExtendedOrder">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <h1>Расширенный заказ</h1>
+            </div>
             <div class="form-group">
                 <label asp-for="DepartureDate" class="control-label"></label>
                 <input asp-for="DepartureDate" class="form-control" />
