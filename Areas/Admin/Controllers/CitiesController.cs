@@ -139,7 +139,7 @@ namespace Blic_tur.Areas.Admin.Controllers
         // POST: Admin/Cities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var city = await _context.Cities.FindAsync(id);
             _context.Cities.Remove(city);
